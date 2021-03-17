@@ -1,2 +1,2 @@
 # af_withdrawl_batch
-* * * * * /k3/batch/test.sh
+&#42;&#42;&#42;&#42;&#42; /k3/batch/withdrawl.sh
