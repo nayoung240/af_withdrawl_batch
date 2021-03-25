@@ -1,11 +1,11 @@
 import React from 'react';
-import ReactonClick from './R066_onClick'
+import ReactMouseOut from './R070_onMouseOut'
 
 function App(){
   return(
     <div>
       <h1>Start React 200!</h1>
-      <ReactonClick/>
+      <ReactMouseOut/>
     </div>
   );
 }
