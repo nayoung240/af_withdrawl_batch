@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+div {
+  background-color: rgb(red, green, blue);
+  color: rgb(red, green, blue);
+  padding: 40px;
+  font-family: 고딕;
+  text-align: center;
+}
+
+h1 {
+  color: white;
+  background-color:tomato;
+  padding: 10px;
+  font-family: 궁서;
+
+}
