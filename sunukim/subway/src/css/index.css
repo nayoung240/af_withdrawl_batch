@@ -1,3 +1,73 @@
+.wrapper-progressBar {
+    width: 100%
+}
+
+.progressBar {
+    padding-left: 0px;
+}
+
+.progressBar li {
+    list-style-type: none;
+    float: left;
+    position: relative;
+    text-align: center;
+}
+
+.progressBar li:before {
+    content: " ";
+    line-height: 30px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px;
+    background-color: white
+}
+
+.progressBar li:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #ddd;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+}
+
+.progressBar li:first-child:after {
+    content: none;
+}
+
+.progressBar li.done {
+    color: #329932;
+}
+
+.progressBar li.done:before {
+    border-color: #329932;
+    background-color: #329932
+}
+
+.progressBar .done:after {
+    background-color: #329932;
+}
+
+.progressBar li.present:before {
+    border-color: #FBDF63;
+    background-color: #FBDF63
+}
+
+.progressBar .present:after {
+    background-color: #FBDF63;
+}
+
+.stepper {
+    width: 100%;
+    margin-top: 2rem;
+}
+
 body {
     background-color: #F0F2F7;
 }
