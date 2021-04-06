@@ -1,6 +1,9 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {change} from 'actions/'
 
-const ImgRadio = (props) => {
+
+let ImgRadio = (props) => {
 
 
     // 저장하는 함수
@@ -31,6 +34,7 @@ const ImgRadio = (props) => {
             }
             target.classList.add('on');
             radioInput.setAttribute('checked', true);
+            props.changeSandWitch({sandwitch : 2});
         }
 
     }
@@ -43,7 +47,7 @@ const ImgRadio = (props) => {
                         <div className="card-body">
                             <h4 className="card-text center_align">{choice.name}</h4>
                         </div>
-                        <input className="radio_btn" type="radio" value={choice.name}/>
+                        <input className="radio_btn" type="radio" value={choice.idx}/>
                     </div>
                 </div>
         )
@@ -56,5 +60,14 @@ const ImgRadio = (props) => {
         </div>
     )
 }
+
+let mapDispatchToProps = (dispatch, props) => {
+    console.log("11");
+    return {
+        changeSandWitch: () => dispatch(change())
+    }
+}
+
+ImgRadio = connect(null, mapDispatchToProps)(ImgRadio);
 
 export default ImgRadio;

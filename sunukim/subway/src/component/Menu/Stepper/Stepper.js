@@ -1,5 +1,13 @@
 import React from 'react';
 
+
+//redux 에서 state 받아서..?
+const checkStep = () => {
+  // 현재 단계는 present
+  // 완료된 단계는 done
+  // 미완 단계는 클래스 없음.
+}
+
 const Stepper = () => {
     return(
         <div className="row">
