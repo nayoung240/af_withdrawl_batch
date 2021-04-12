@@ -12,7 +12,7 @@ const data = (state = initState, action) => {
         case CHANGE:
             console.log("CHANGE")
             return state, {
-                sandwitch : state.sandwitch
+                sandwitch : action.sandwitch
             }
         default:
             console.log("default")
