@@ -1,11 +1,15 @@
 import React ,{Component, useState} from 'react';
 
+
 const LeftSelectMenu = (props) => {
-    const [menu] = useState();
+    props = {...props}
+    console.log(props.menu_list)
     return(
         <div>
             <h1>선택 메뉴</h1>
-            <h3>{props.menu == '' ? '선택해 주세요' : props.menu}</h3>
+            {props.menu_list.map((data) => (
+                <h3>{data == '' ? '선택해 주세요' : data}</h3>
+            ))}
         </div>
     );
 }

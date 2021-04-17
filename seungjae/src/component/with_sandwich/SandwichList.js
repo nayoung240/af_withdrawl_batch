@@ -1,5 +1,8 @@
 import React ,{useState} from 'react';
 import LeftSelectMenu from './LeftSelectMenu';
+import PageNation from '../action/pagenation';
+import main_menu from './main_menu';
+import SandwichLen from './SandwichLen';
 
 const menu_list = [
     "bmt", "italy", "meet", "chicken", "beef"
@@ -10,13 +13,15 @@ const SandwichList = () => {
     const [sandwich, setSandwich] = useState([]);
     const [checkList, setCheckList] = useState([false, false, false, false, false]);
 
-    const handleClickCheck = (index) => {
+    const handleChangeCheck = (index) => {
         let temp = checkList.map((value, idx) => (
             index === idx ? !value : false
         ));
-        setCheckList(temp);
+
         sandwich.pop();
         sandwich.push(menu_list[index]);
+
+        setCheckList(temp);
         setSandwich(sandwich);
     }
 
@@ -25,11 +30,12 @@ const SandwichList = () => {
             <ul>
                 {menu_list.map((value, idx) => (
                     <li key={idx}>
-                        <input type="checkbox" checked={checkList[idx]} onClick={ () => handleClickCheck(idx)}/>{value}
+                        <input type="checkbox" checked={checkList[idx]} onChange={ () => handleChangeCheck(idx)}/>{value}
                     </li>
                 ))}
             </ul>
-            <LeftSelectMenu menu={sandwich}></LeftSelectMenu>
+            <LeftSelectMenu menu_list={sandwich} />
+            <PageNation prev="/sandwich/main" next="/sandwich/len"/>
         </div>
     );
 }
