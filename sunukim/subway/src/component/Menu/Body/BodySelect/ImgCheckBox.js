@@ -4,7 +4,7 @@ import {change} from 'actions/'
 
 // 뭐 고르는지 !! 내려줘야함.
 
-let ImgRadio = (props) => {
+let ImgCheckBox = (props) => {
 
     // const count = useSelector(selectCount)
     const dispatch = useDispatch()
@@ -12,6 +12,20 @@ let ImgRadio = (props) => {
     switch(props.menuid){
         case "1":
             selectMenu = 'sandwitch'
+        case "2":
+            selectMenu = 'bread_length'
+        case "3":
+            selectMenu = 'bread'
+        case "4":
+            selectMenu = 'toasting'
+        case "5":
+            selectMenu = 'cheese'
+        case "6":
+            selectMenu = 'vege'
+        case "7":
+            selectMenu = 'sauce'
+        case "8":
+            selectMenu = 'more_added'
         default:
             selectMenu = 'sandwitch'
     }
@@ -38,10 +52,6 @@ let ImgRadio = (props) => {
             radioInput.setAttribute('checked', false);
         }
         else{
-            let cards = document.getElementsByClassName('card');
-            for(let i = 0 ; i < cards.length; i++){
-                cards[i].classList.remove('on')
-            }
             target.classList.add('on');
             radioInput.setAttribute('checked', true);
             dispatch(change({item: selectMenu, id : radioInput.value}));
@@ -57,7 +67,7 @@ let ImgRadio = (props) => {
                         <div className="card-body">
                             <h4 className="card-text center_align">{choice.name}</h4>
                         </div>
-                        <input className="radio_btn radio_no_style" type="radio" value={choice.idx}/>
+                        <input className="radio_btn" type="checkbox" value={choice.idx}/>
                     </div>
                 </div>
         )
@@ -73,4 +83,4 @@ let ImgRadio = (props) => {
 
 
 
-export default ImgRadio;
+export default ImgCheckBox;

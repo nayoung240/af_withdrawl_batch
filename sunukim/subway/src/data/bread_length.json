@@ -1,1 +1,17 @@
-// 빵길이 15, 30
+{
+    "title":"빵 길이 고르기",
+    "results":[
+        {
+        "idx":1,
+        "name":"15cm",
+        "eng_name":"15cm",
+        "short_name":"15cm"
+        },
+        {
+        "idx":2,
+        "name":"30cm",
+        "eng_name":"30cm",
+        "short_name":"30cm"
+        }
+    ]
+}

@@ -9,7 +9,7 @@ const Main = () => {
             </div>
             <div className="center_align font_content">
                 <div>
-                    <Link to="/menu">
+                    <Link to="/menu/1">
                         <button className="sandwich_btn btn">
                             샌드위치 만들기    
                         </button>

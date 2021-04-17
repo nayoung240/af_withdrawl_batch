@@ -1,7 +1,7 @@
 export const CHANGE = 'CHANGE';
-export const change = () => {
-    console.log("22")
+export const change = (data) => {
     return {
         type: CHANGE
+        , data
     }
 }
