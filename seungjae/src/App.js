@@ -1,12 +1,11 @@
 import React from 'react';
+import  Routes  from './component/Routes';
 import './App.css';
-import LifeCycle from './chapter01/lab_05_variable_type';
 
 function App(){
   return (
-    <div>
-      <LifeCycle
-      prop_value = 'FromApp.js'></LifeCycle>
+    <div className="main">
+        <Routes/>
     </div>
   );
 }
