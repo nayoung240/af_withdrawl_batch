@@ -22,7 +22,7 @@ let StrRadio = (props) => {
         return(
             <div key={index} className="form-check">
                 <input className="form-check-input" type="radio" name="flexRadioDefault" id={choice.idx}/>
-                <label className="form-check-label" for={choice.idx}>{choice.name}</label>
+                <label className="form-check-label" htmlFor={choice.idx}>{choice.name}</label>
             </div>
         )
     });

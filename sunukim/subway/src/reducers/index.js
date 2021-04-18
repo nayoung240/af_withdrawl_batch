@@ -7,7 +7,8 @@ const initState = {
     cheese : 1,
     more_added : 1,
     sauce : 1,
-    vege : 1
+    vege : 1,
+    bread_length: 1
 }
 
 const data = (state = initState, action) => {
