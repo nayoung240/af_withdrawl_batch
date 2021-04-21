@@ -1,15 +1,15 @@
-import React ,{Component} from 'react';
+import React ,{useState} from 'react';
 import SANDWICHLIST from './SandwichList';
-import { Switch } from 'react-router';
+import SANDWICHLEN from './SandwichLen';
 
-function main_menu() {
-
+const MainMenu = () => {
     return(
         <div className="container">
             <h1>샌드위치 만들기</h1>
             <SANDWICHLIST></SANDWICHLIST>
+            {/* <SANDWICHLEN></SANDWICHLEN> */}
         </div>
     );
 }
 
-export default main_menu;
+export default MainMenu;
