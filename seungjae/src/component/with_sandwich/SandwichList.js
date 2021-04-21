@@ -1,7 +1,7 @@
 import React ,{useState} from 'react';
 import LeftSelectMenu from './LeftSelectMenu';
 import PageNation from '../action/pagenation';
-import main_menu from './main_menu';
+import MainMenu from './MainMenu';
 import SandwichLen from './SandwichLen';
 
 const menu_list = [
@@ -10,7 +10,7 @@ const menu_list = [
 
 const SandwichList = () => {
     
-    const [sandwich, setSandwich] = useState([]);
+    const [sandwich, setSandwich] = useState("");
     const [checkList, setCheckList] = useState([false, false, false, false, false]);
 
     const handleChangeCheck = (index) => {
@@ -18,11 +18,8 @@ const SandwichList = () => {
             index === idx ? !value : false
         ));
 
-        sandwich.pop();
-        sandwich.push(menu_list[index]);
-
         setCheckList(temp);
-        setSandwich(sandwich);
+        setSandwich(menu_list[index]);
     }
 
     return(
@@ -30,7 +27,7 @@ const SandwichList = () => {
             <ul>
                 {menu_list.map((value, idx) => (
                     <li key={idx}>
-                        <input type="checkbox" checked={checkList[idx]} onChange={ () => handleChangeCheck(idx)}/>{value}
+                        <input type="checkbox" checked={checkList[idx]} onChange={ () => handleChangeCheck(idx)} readOnly/>{value}
                     </li>
                 ))}
             </ul>

@@ -1,15 +1,20 @@
-import React ,{Component, useState} from 'react';
+import React ,{useEffect, useState} from 'react';
 
-
+const menu_list = [];
 const LeftSelectMenu = (props) => {
-    props = {...props}
-    console.log(props.menu_list)
+    const [sandwich, setSandwich] = useState([]);
+    useEffect(() => {
+        setSandwich(sandwich);
+    }, props.menu_list); 
+
     return(
         <div>
             <h1>선택 메뉴</h1>
-            {props.menu_list.map((data) => (
-                <h3>{data == '' ? '선택해 주세요' : data}</h3>
-            ))}
+            <ul>
+                {/* {sandwich.map((data) => (
+                    <li><h3>{data == '' ? '선택해 주세요' : data}</h3></li>
+                ))} */}
+            </ul>
         </div>
     );
 }
