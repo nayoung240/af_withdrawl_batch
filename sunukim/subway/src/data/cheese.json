@@ -1,0 +1,33 @@
+{
+    "title":"치즈 고르기",
+    "results":[
+        {
+            "idx":1,
+            "name":"아메리칸 치즈",
+            "eng_name":"American Cheese",
+            "short_name":"아메리칸 치즈",
+            "image":"/cheese_image/american_cheese.png"
+        },
+        {
+            "idx":2,
+            "name":"모짜렐라 치즈",
+            "eng_name":"Mozzarella Cheese",
+            "short_name":"모짜렐라 치즈",
+            "image":"/cheese_image/mozzarella_cheese.png"
+        },
+        {
+            "idx":3,
+            "name":"슈레드 치즈",
+            "eng_name":"Shread Cheese",
+            "short_name":"슈레드 치즈",
+            "image":"/cheese_image/shread_cheese.png"
+        },
+        {
+            "idx":4,
+            "name":"치즈 제외",
+            "eng_name":"None Cheese",
+            "short_name":"치즈 제외",
+            "image":"/cheese_image/none_cheese.png"
+        }
+    ]
+}

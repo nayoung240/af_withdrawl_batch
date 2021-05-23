@@ -8,20 +8,28 @@ const checkStep = () => {
   // 미완 단계는 클래스 없음.
 }
 
+// const eachStep = list.map((step, index) => {
+//   let stepState = ''
+//   if (step.index == menuid){
+//     stepState = 'present'
+//   }
+//   else if (step) {
+//     stepState = 'done'
+//   }
+  
+//   let stepClass = `col ${stepState}`;
+//   return(
+//     <li className={stepClass} >샌드위치</li>
+//   )
+// });
+
 const Stepper = () => {
     return(
         <div className="row">
             <div className="block stepper">
               <div className="wrapper-progressBar">
                 <ul className="progressBar row">
-                  <li className="col done">샌드위치</li>
-                  <li className="col done">빵 길이</li>
-                  <li className="col done">빵</li>
-                  <li className="col done">토스팅</li>
-                  <li className="col present">치즈</li>
-                  <li className="col ">야채</li>
-                  <li className="col ">소스</li>
-                  <li className="col ">추가 선택</li>
+                  
                 </ul>
               </div>
             </div>

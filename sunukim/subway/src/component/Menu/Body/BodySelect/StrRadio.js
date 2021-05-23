@@ -8,13 +8,7 @@ let StrRadio = (props) => {
 
     // const count = useSelector(selectCount)
     const dispatch = useDispatch()
-    let selectMenu = 'sandwitch'
-    switch(props.menuid){
-        case "2":
-            selectMenu = 'bread_length'
-        default:
-            selectMenu = 'sandwitch'
-    }
+    // let selectMenu = props.checkMenuId(props.menuid)
 
     // 저장하는 함수
 

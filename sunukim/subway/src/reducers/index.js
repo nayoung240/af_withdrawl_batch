@@ -2,13 +2,18 @@ import {CHANGE} from '../actions';
 import {combineReducers} from 'redux';
 
 const initState = {
-    sandwitch : 1,
-    bread : 1,
-    cheese : 1,
-    more_added : 1,
-    sauce : 1,
-    vege : 1,
-    bread_length: 1
+    recipe : {
+        sandwitch : null,
+        bread : null,
+        cheese : null,
+        more_added : null,
+        sauce : null,
+        vege : null,
+        bread_length: null
+    },
+    step : {
+        current_step : 1
+    }
 }
 
 const data = (state = initState, action) => {

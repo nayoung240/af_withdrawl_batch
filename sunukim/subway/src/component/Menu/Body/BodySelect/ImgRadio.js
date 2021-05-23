@@ -5,26 +5,22 @@ import {change} from 'actions/'
 // 뭐 고르는지 !! 내려줘야함.
 
 let ImgRadio = (props) => {
-
-    // const count = useSelector(selectCount)
+    console.log("props : ", props)
+    let initdata = useSelector((state) => {
+        console.log("state", state)
+        return state.data
+    })
+    console.log("initdata : ", initdata)
     const dispatch = useDispatch()
-    let selectMenu = 'sandwitch'
-    switch(props.menuid){
-        case "1":
-            selectMenu = 'sandwitch'
-        default:
-            selectMenu = 'sandwitch'
-    }
-
     // 저장하는 함수
 
     // 카드 클릭 함수
     const cardClick = (e) => {
         e.stopPropagation();
-        console.log(e.target.parentNode);
+
         let target = (e.target.classList.contains('card-text')) ? e.target.parentNode.parentNode : e.target.parentNode;
         let bIsOn = target.classList.contains('on');
-        console.log(target.children);
+
         let targetChildren = target.children;
         let radioInput = null;
         for( let el of targetChildren){
@@ -44,14 +40,18 @@ let ImgRadio = (props) => {
             }
             target.classList.add('on');
             radioInput.setAttribute('checked', true);
-            dispatch(change({item: selectMenu, id : radioInput.value}));
+            dispatch(change({item: props.menuName, id : radioInput.value, initdata: initdata}));
         }
 
     }
 
     const spreadArr = props.data.map((choice, index) => {
+        let cardClass = 'card_area col-lg-4 col-md-6 col-sm-12 ';
+        if (initdata.recipe[props.menuName] != null && initdata.recipe[props.menuName] == choice.idx){
+            cardClass += 'on'
+        }
         return(
-                <div key={index} className="card_area col-lg-4 col-md-6 col-sm-12">
+                <div key={choice.idx} className={cardClass}>
                     <div onClick={cardClick} className="card mx-auto rounded menu" style={{width: '18rem'}}>
                         <img src={choice.image} className="card-img-top" alt={choice.name}/>
                         <div className="card-body">

@@ -8,27 +8,7 @@ let ImgCheckBox = (props) => {
 
     // const count = useSelector(selectCount)
     const dispatch = useDispatch()
-    let selectMenu = 'sandwitch'
-    switch(props.menuid){
-        case "1":
-            selectMenu = 'sandwitch'
-        case "2":
-            selectMenu = 'bread_length'
-        case "3":
-            selectMenu = 'bread'
-        case "4":
-            selectMenu = 'toasting'
-        case "5":
-            selectMenu = 'cheese'
-        case "6":
-            selectMenu = 'vege'
-        case "7":
-            selectMenu = 'sauce'
-        case "8":
-            selectMenu = 'more_added'
-        default:
-            selectMenu = 'sandwitch'
-    }
+    // let selectMenu = props.checkMenuId(props.menuid)
 
     // 저장하는 함수
 
@@ -54,7 +34,7 @@ let ImgCheckBox = (props) => {
         else{
             target.classList.add('on');
             radioInput.setAttribute('checked', true);
-            dispatch(change({item: selectMenu, id : radioInput.value}));
+            dispatch(change({item: props.menuName, id : radioInput.value}));
         }
 
     }
