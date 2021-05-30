@@ -8,11 +8,11 @@ import {change} from 'actions/'
 // Lnik 로 바꿔주기
 
 const Buttons = () => {
-    let currentStep = 
-    let initdata = useSelector((state) => {
-        console.log("buttons state", state)
-        return state
-    })
+    // let currentStep = 
+    // let initdata = useSelector((state) => {
+    //     console.log("buttons state", state)
+    //     return state
+    // })
 
     return(
         <div className="font_content center_align next_btn_div">

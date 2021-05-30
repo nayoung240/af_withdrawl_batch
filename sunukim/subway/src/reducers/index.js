@@ -11,8 +11,9 @@ const initState = {
         vege : null,
         bread_length: null
     },
-    step : {
-        current_step : 1
+    current_step : {
+        id : 1,
+        name : 'sandwitch'
     }
 }
 
@@ -23,7 +24,7 @@ const data = (state = initState, action) => {
         case CHANGE:
             console.log(action)
             let item_name = action.data.item
-            newState[item_name] = action.data.id
+            newState.recipe[item_name] = action.data.id
             return newState;
         default:
             return state;

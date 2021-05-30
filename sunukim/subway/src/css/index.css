@@ -140,6 +140,10 @@ body {
     width: 0;
 }
 
+input {
+    appearance: none;
+}
+
 .prev_btn{
     background-color: #329932;
 }

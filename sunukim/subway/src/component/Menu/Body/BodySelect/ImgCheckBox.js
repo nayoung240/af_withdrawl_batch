@@ -6,9 +6,25 @@ import {change} from 'actions/'
 
 let ImgCheckBox = (props) => {
 
-    // const count = useSelector(selectCount)
+
+    let removeEle = (ele, arr) => {
+        const index = arr.indexOf(ele);
+        if (index > -1) {
+            arr.splice(index, 1);
+        }
+        return arr;
+    }
+
+    let initdata = useSelector((state) => {
+        console.log(state.data)
+        return state.data
+    })
     const dispatch = useDispatch()
-    // let selectMenu = props.checkMenuId(props.menuid)
+
+    let current_step = initdata.current_step
+    let recipe = initdata.recipe
+    
+    let current_choices = (recipe[current_step.name] != null) ? recipe[current_step.name] : []
 
     // 저장하는 함수
 
@@ -20,28 +36,32 @@ let ImgCheckBox = (props) => {
         let bIsOn = target.classList.contains('on');
         console.log(target.children);
         let targetChildren = target.children;
-        let radioInput = null;
+        let checkBoxInput = null;
         for( let el of targetChildren){
             if(el.nodeName == 'INPUT'){
-                radioInput = el;
+                checkBoxInput = el;
                 break;
             }
         }
         if(bIsOn){
             target.classList.remove('on');
-            radioInput.setAttribute('checked', false);
+            checkBoxInput.setAttribute('checked', false);
+            removeEle(checkBoxInput.value, current_choices)
+            dispatch(change({item: current_step.name, id : current_choices}));
         }
         else{
             target.classList.add('on');
-            radioInput.setAttribute('checked', true);
-            dispatch(change({item: props.menuName, id : radioInput.value}));
+            checkBoxInput.setAttribute('checked', true);
+            current_choices.push(checkBoxInput.value)
+            dispatch(change({item: current_step.name, id : current_choices}));
         }
 
     }
 
     const spreadArr = props.data.map((choice, index) => {
+        let szClassList = (current_choices.includes(choice.idx)) ? "card_area col-lg-4 col-md-6 col-sm-12 on" : "card_area col-lg-4 col-md-6 col-sm-12" 
         return(
-                <div key={index} className="card_area col-lg-4 col-md-6 col-sm-12">
+                <div key={choice.idx} className={szClassList}>
                     <div onClick={cardClick} className="card mx-auto rounded menu" style={{width: '18rem'}}>
                         <img src={choice.image} className="card-img-top" alt={choice.name}/>
                         <div className="card-body">
