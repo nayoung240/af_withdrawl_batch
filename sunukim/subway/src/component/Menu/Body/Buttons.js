@@ -8,23 +8,22 @@ import {change} from 'actions/'
 // Lnik 로 바꿔주기
 
 const Buttons = () => {
-    // let currentStep = 
-    // let initdata = useSelector((state) => {
-    //     console.log("buttons state", state)
-    //     return state
-    // })
+    let current_state = useSelector((state) => {
+        return state
+    })
+    let recipe = current_state.data.recipe;
+    let step = current_state.data.current_step;
 
     return(
         <div className="font_content center_align next_btn_div">
             <button className="prev_btn btn">
                 <h4>이전</h4>
             </button>
-            <button className="next_btn btn" data-toggle="tooltip" data-placement="top" title="메뉴를 선택해주세요!">
-                <h4>다음</h4>
-            </button>
-            <button className="next_btn btn on">
-                <h4>다음</h4>
-            </button>
+            {
+                recipe[step.name] == null
+                ? <button className="next_btn btn"><h4>다음</h4></button>
+                : <button className="next_btn btn on"><h4>다음</h4></button>
+            }
         </div>
     )
 }

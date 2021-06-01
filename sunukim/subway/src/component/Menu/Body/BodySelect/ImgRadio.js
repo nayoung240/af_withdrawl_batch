@@ -5,15 +5,15 @@ import {change} from 'actions/'
 // 뭐 고르는지 !! 내려줘야함.
 
 let ImgRadio = (props) => {
-    console.log("props : ", props)
-    let initdata = useSelector((state) => {
-        console.log("state", state)
+    // State 부르기
+    let current_state = useSelector((state) => {
         return state.data
     })
-    console.log("initdata : ", initdata)
-    const dispatch = useDispatch()
+    let current_step = current_state.current_step;
+    let current_recipe = current_state.recipe;
     // 저장하는 함수
-
+    const dispatch = useDispatch()
+    
     // 카드 클릭 함수
     const cardClick = (e) => {
         e.stopPropagation();
@@ -29,9 +29,14 @@ let ImgRadio = (props) => {
                 break;
             }
         }
+
+        // On 되어 있는거 한번 더 눌러서 취소하는 경우
         if(bIsOn){
             target.classList.remove('on');
             radioInput.setAttribute('checked', false);
+
+            // State 에 저장
+            dispatch(change({item: current_step.name, id : null}));
         }
         else{
             let cards = document.getElementsByClassName('card');
@@ -40,14 +45,16 @@ let ImgRadio = (props) => {
             }
             target.classList.add('on');
             radioInput.setAttribute('checked', true);
-            dispatch(change({item: props.menuName, id : radioInput.value, initdata: initdata}));
+
+            // State 에 저장
+            dispatch(change({item: current_step.step_name, id : radioInput.value}));
         }
 
     }
 
     const spreadArr = props.data.map((choice, index) => {
         let cardClass = 'card_area col-lg-4 col-md-6 col-sm-12 ';
-        if (initdata.recipe[props.menuName] != null && initdata.recipe[props.menuName] == choice.idx){
+        if (current_recipe[current_step.step_name] != null && current_recipe[current_step.step_name] == choice.idx){
             cardClass += 'on'
         }
         return(
