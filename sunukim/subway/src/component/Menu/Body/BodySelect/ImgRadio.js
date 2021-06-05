@@ -47,19 +47,19 @@ let ImgRadio = (props) => {
             radioInput.setAttribute('checked', true);
 
             // State 에 저장
-            dispatch(change({item: current_step.step_name, id : radioInput.value}));
+            dispatch(change({item: current_step.name, id : radioInput.value}));
         }
 
     }
 
     const spreadArr = props.data.map((choice, index) => {
-        let cardClass = 'card_area col-lg-4 col-md-6 col-sm-12 ';
-        if (current_recipe[current_step.step_name] != null && current_recipe[current_step.step_name] == choice.idx){
+        let cardClass = 'card mx-auto rounded menu ';
+        if (current_recipe[current_step.name] != null && current_recipe[current_step.name] == choice.idx){
             cardClass += 'on'
         }
         return(
-                <div key={choice.idx} className={cardClass}>
-                    <div onClick={cardClick} className="card mx-auto rounded menu" style={{width: '18rem'}}>
+                <div key={choice.idx} className='card_area col-lg-4 col-md-6 col-sm-12'>
+                    <div onClick={cardClick} className={cardClass} style={{width: '18rem'}}>
                         <img src={choice.image} className="card-img-top" alt={choice.name}/>
                         <div className="card-body">
                             <h4 className="card-text center_align">{choice.name}</h4>

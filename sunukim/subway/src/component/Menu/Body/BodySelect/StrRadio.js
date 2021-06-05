@@ -6,7 +6,7 @@ import {change} from 'actions/'
 
 let StrRadio = (props) => {
     let initdata = useSelector((state) => {
-        console.log(state.data)
+        // console.log(state.data)
         return state.data
     })
     const dispatch = useDispatch()
@@ -17,7 +17,7 @@ let StrRadio = (props) => {
     // 클릭 및 저장 함수
     const StrClick = (e) => {
         e.stopPropagation();
-        console.log(e.target)
+        // console.log(e.target)
         const targetId = e.target.id;
         dispatch(change({item: current_step.name, id : targetId}));
     }

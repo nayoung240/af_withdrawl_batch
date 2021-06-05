@@ -16,7 +16,7 @@ let ImgCheckBox = (props) => {
     }
 
     let initdata = useSelector((state) => {
-        console.log(state.data)
+        // console.log(state.data)
         return state.data
     })
     const dispatch = useDispatch()
@@ -25,16 +25,16 @@ let ImgCheckBox = (props) => {
     let recipe = initdata.recipe
     
     let current_choices = (recipe[current_step.name] != null) ? recipe[current_step.name] : []
-
+    console.log("choices : ", current_choices)
     // 저장하는 함수
 
     // 카드 클릭 함수
     const cardClick = (e) => {
         e.stopPropagation();
-        console.log(e.target.parentNode);
+        // console.log(e.target.parentNode);
         let target = (e.target.classList.contains('card-text')) ? e.target.parentNode.parentNode : e.target.parentNode;
         let bIsOn = target.classList.contains('on');
-        console.log(target.children);
+        // console.log(target.children);
         let targetChildren = target.children;
         let checkBoxInput = null;
         for( let el of targetChildren){
@@ -59,10 +59,15 @@ let ImgCheckBox = (props) => {
     }
 
     const spreadArr = props.data.map((choice, index) => {
-        let szClassList = (current_choices.includes(choice.idx)) ? "card_area col-lg-4 col-md-6 col-sm-12 on" : "card_area col-lg-4 col-md-6 col-sm-12" 
+        let szClassList = "card mx-auto rounded menu ";
+        
+        if (current_choices.includes(String(choice.idx))){
+            szClassList += "on"
+        }
+         
         return(
-                <div key={choice.idx} className={szClassList}>
-                    <div onClick={cardClick} className="card mx-auto rounded menu" style={{width: '18rem'}}>
+                <div key={choice.idx} className="card_area col-lg-4 col-md-6 col-sm-12">
+                    <div onClick={cardClick} className={szClassList} style={{width: '18rem'}}>
                         <img src={choice.image} className="card-img-top" alt={choice.name}/>
                         <div className="card-body">
                             <h4 className="card-text center_align">{choice.name}</h4>

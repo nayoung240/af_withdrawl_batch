@@ -9,15 +9,13 @@ export const change = (data) => {
 export const NEXT_STEP = 'NEXT_STEP';
 export const next_step = (data) => {
     return {
-        type : NEXT_STEP,
-        data
+        type : NEXT_STEP
     }
 }
 
 export const BEFORE_STEP = 'BEFORE_STEP';
 export const before_step = (data) => {
     return {
-        type : BEFORE_STEP,
-        data
+        type : BEFORE_STEP
     }
 }
