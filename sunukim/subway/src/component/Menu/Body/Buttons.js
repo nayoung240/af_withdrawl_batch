@@ -34,7 +34,7 @@ const Buttons = () => {
                 : <button onClick={beforeStep} className="prev_btn btn"><h4>이전</h4></button>
             }
             {
-                recipe[step.name] == null && step.id < 8
+                recipe[step.name] == null && step.id < 7
                 ? <button className="next_btn btn"><h4>다음</h4></button>
                 : <button onClick={nextStep} className="next_btn btn on"><h4>다음</h4></button>
             }
