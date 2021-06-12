@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect, useSelector, useDispatch } from 'react-redux'
-import {change} from 'actions/'
+import {change_step} from 'actions/'
 
 const Stepper = () => {
     // State 부르기
@@ -13,6 +13,20 @@ const Stepper = () => {
     // 저장하는 함수
     const dispatch = useDispatch()
 
+    const moveStep = (e) => {
+      e.stopPropagation();
+      const stepId = e.target.getAttribute('data-step-id');
+      const stepName = e.target.getAttribute('data-step-name');
+      console.log(stepName)
+      if (current_recipe[stepName] == null) {
+        alert("이전 단계까지 완료 후 이동 가능합니다.")
+        return 
+      }
+      if (stepId != null){
+        dispatch(change_step({id : stepId}))
+      }
+    }
+
     const eachStep = Object.entries(step_info).map(([key, value], index) => {
         let stepState = ''
         if (index+1 == current_step.id){
@@ -24,7 +38,9 @@ const Stepper = () => {
         
         let stepClass = `col ${stepState}`;
         return(
-          <li key={index} className={stepClass} >{value.name}</li>
+          <li key={index} className={stepClass} >
+            <a onClick={moveStep} className="ahover" data-step-name={value.recipe} data-step-id={key}>{value.name}</a>
+          </li>
         )
     });
 

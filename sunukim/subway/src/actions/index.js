@@ -19,3 +19,11 @@ export const before_step = (data) => {
         type : BEFORE_STEP
     }
 }
+
+export const CHANGE_STEP = 'CHANGE_STEP';
+export const change_step = (data) => {
+    return {
+        type : CHANGE_STEP
+        , data
+    }
+}

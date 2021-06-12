@@ -12,6 +12,9 @@ let ImgCheckBox = (props) => {
         if (index > -1) {
             arr.splice(index, 1);
         }
+        if (arr.length < 1) {
+            return null
+        }
         return arr;
     }
 
@@ -46,7 +49,7 @@ let ImgCheckBox = (props) => {
         if(bIsOn){
             target.classList.remove('on');
             checkBoxInput.setAttribute('checked', false);
-            removeEle(checkBoxInput.value, current_choices)
+            current_choices = removeEle(checkBoxInput.value, current_choices)
             dispatch(change({item: current_step.name, id : current_choices}));
         }
         else{
@@ -72,7 +75,7 @@ let ImgCheckBox = (props) => {
                         <div className="card-body">
                             <h4 className="card-text center_align">{choice.name}</h4>
                         </div>
-                        <input className="radio_btn" type="checkbox" value={choice.idx}/>
+                        <input className="checkbox_no_style radio_btn" type="checkbox" value={choice.idx}/>
                     </div>
                 </div>
         )

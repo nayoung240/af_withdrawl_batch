@@ -128,6 +128,7 @@ body {
 
 .next_btn{
     background-color: grey;
+    margin-left: 1rem;
 }
 
 .next_btn.on{
@@ -140,9 +141,16 @@ body {
     width: 0;
 }
 
-input {
-    appearance: none;
+.checkbox_no_style{
+    opacity: 0;
+    position: fixed;
+    width: 0;
 }
+
+.ahover{
+    cursor:pointer;
+}
+
 
 .prev_btn{
     background-color: #329932;

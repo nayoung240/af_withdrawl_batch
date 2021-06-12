@@ -22,7 +22,6 @@ let StrRadio = (props) => {
         
         let target = (e.target.classList.contains('form-check-input') || e.target.classList.contains('form-check-label')) ? e.target.parentNode : e.target;
         
-        const FontAwesomeCheck = <FontAwesomeIcon icon={faCheck} />
         let bIsOn = target.classList.contains('on');
         if(bIsOn){
             target.classList.remove('on')

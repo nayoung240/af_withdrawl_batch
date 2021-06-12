@@ -1,4 +1,4 @@
-import {BEFORE_STEP, CHANGE, NEXT_STEP} from '../actions';
+import {BEFORE_STEP, CHANGE, NEXT_STEP, CHANGE_STEP} from '../actions';
 import {combineReducers} from 'redux';
 
 const initState = {
@@ -43,6 +43,10 @@ const data = (state = initState, action) => {
             return newState
         case BEFORE_STEP:
             newState.current_step.id -= 1
+            newState.current_step.name = changeName(newState.current_step.id)
+            return newState
+        case CHANGE_STEP:
+            newState.current_step.id = parseInt(action.data.id)
             newState.current_step.name = changeName(newState.current_step.id)
             return newState
         default:
