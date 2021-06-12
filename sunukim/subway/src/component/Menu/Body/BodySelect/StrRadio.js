@@ -2,8 +2,7 @@ import React from 'react';
 import {connect, useSelector, useDispatch } from 'react-redux'
 import {change} from 'actions/'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faChevronCircleDown } from '@fortawesome/free-solid-svg-icons'
-import { check } from '@fortawesome/free-solid-svg-icons'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 // 뭐 고르는지 !! 내려줘야함.
 
@@ -46,8 +45,10 @@ let StrRadio = (props) => {
         const FontAwesomeCheck = <FontAwesomeIcon icon={faCheck} /> 
         let inputHtml = <input className="form-check-input" type="radio" name="flexRadioDefault" />
         let strRadioClass = 'str_radio '
+        let labelClass = `radio_label form-check-label `
         if(recipe[current_step.name] == choice.idx){
              strRadioClass += 'on'
+             labelClass += 'on'
         }
         return(
             <div data-id={choice.idx} key={index} onClick={StrClick} className={strRadioClass}>
@@ -57,7 +58,7 @@ let StrRadio = (props) => {
                     : ""
                 }
                 {inputHtml}
-                <label className="form-check-label">{choice.name}</label>
+                <label className={labelClass}>{choice.name}</label>
             </div>
         )
     });

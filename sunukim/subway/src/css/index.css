@@ -151,12 +151,26 @@ input {
 .str_radio {
     width: 12rem;
     border: solid;
-    margin: auto;
+    margin-top: 1rem;
+    margin-left:auto;
+    margin-right:auto;
     border-radius : 5px
 }
 
 .str_radio.on {
-    background-color: #329932;
+    background-color: #FBDF63;
+}
+
+.radio_label.on {
+    margin-left: 1rem;
+}
+
+.complete_btn{
+    background-color: grey;
+}
+
+.complete_btn.on {
+    background-color: #D896FF;
 }
 
 @font-face { 
