@@ -42,7 +42,7 @@ let StrRadio = (props) => {
 
     const spreadArr = props.data.map((choice, index) => {
         const FontAwesomeCheck = <FontAwesomeIcon icon={faCheck} /> 
-        let inputHtml = <input className="form-check-input" type="radio" name="flexRadioDefault" />
+        let inputHtml = <input className="form-check-input radio_no_style" type="radio" name="flexRadioDefault" />
         let strRadioClass = 'str_radio '
         let labelClass = `radio_label form-check-label `
         if(recipe[current_step.name] == choice.idx){

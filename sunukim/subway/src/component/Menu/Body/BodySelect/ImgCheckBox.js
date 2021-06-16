@@ -31,6 +31,12 @@ let ImgCheckBox = (props) => {
     console.log("choices : ", current_choices)
     // 저장하는 함수
 
+    // 제외 카드 정보
+    const excludeCardObj = {
+        7 : 15,
+        8 : 6
+    }
+
     // 카드 클릭 함수
     const cardClick = (e) => {
         e.stopPropagation();
@@ -46,17 +52,38 @@ let ImgCheckBox = (props) => {
                 break;
             }
         }
-        if(bIsOn){
-            target.classList.remove('on');
-            checkBoxInput.setAttribute('checked', false);
-            current_choices = removeEle(checkBoxInput.value, current_choices)
+        const keyArr = Object.keys(excludeCardObj)
+        console.log(keyArr, current_step.id)
+        if(keyArr.includes(String(current_step.id)) && excludeCardObj[current_step.id] == checkBoxInput.value) {
+            let allOnCards = document.getElementsByClassName('on');
+            for(let i = 0 ; i < allOnCards.length; i++){
+                allOnCards[i].classList.remove('on')
+            }
+            target.classList.add('on');
+            checkBoxInput.setAttribute('checked', true);
+            current_choices = [checkBoxInput.value]
             dispatch(change({item: current_step.name, id : current_choices}));
         }
         else{
-            target.classList.add('on');
-            checkBoxInput.setAttribute('checked', true);
-            current_choices.push(checkBoxInput.value)
-            dispatch(change({item: current_step.name, id : current_choices}));
+            if(bIsOn){
+                target.classList.remove('on');
+                checkBoxInput.setAttribute('checked', false);
+                current_choices = removeEle(checkBoxInput.value, current_choices)
+                dispatch(change({item: current_step.name, id : current_choices}));
+            }
+            else{
+                if (current_choices.includes(excludeCardObj[current_step.id])){
+                    let allOnCards = document.getElementsByClassName('on');
+                    for(let i = 0 ; i < allOnCards.length; i++){
+                        allOnCards[i].classList.remove('on')
+                    }
+                    current_choices = []
+                }
+                target.classList.add('on');
+                checkBoxInput.setAttribute('checked', true);
+                current_choices.push(checkBoxInput.value)
+                dispatch(change({item: current_step.name, id : current_choices}));
+            }
         }
 
     }

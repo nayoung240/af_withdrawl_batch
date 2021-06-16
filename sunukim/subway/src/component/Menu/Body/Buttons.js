@@ -18,18 +18,15 @@ const Buttons = () => {
     const updateStep = (e) => {
         e.stopPropagation();
         let target = e.currentTarget
-        if(recipe[step.name] != null){
-            if (target.classList.contains('next_btn')){
-                dispatch(next_step({}))
-            }
-            else if (target.classList.contains('prev_btn')){
-                dispatch(before_step({}))
-            }
-            else if (target.classList.contains('complete_btn')){
-    
-            }
+        if(recipe[step.name] != null && target.classList.contains('next_btn')){
+            dispatch(next_step({}))
         }
-        
+        else if (target.classList.contains('prev_btn')){
+            dispatch(before_step({}))
+        }
+        else if (target.classList.contains('complete_btn')){
+    
+        }
     }
 
     const makeBtnObj = () => {
