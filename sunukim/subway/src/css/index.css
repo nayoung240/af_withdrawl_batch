@@ -182,6 +182,16 @@ body {
     background-color: #D896FF;
 }
 
+.result_table {
+    border : solid;
+    border-radius : 9px;
+    margin-top: 4rem;
+}
+
+.thead_yellow{
+    background-color: #FBDF63;
+}
+
 @font-face { 
     font-family: 'BBTreeGB'; 
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff') 

@@ -28,7 +28,7 @@ let StrRadio = (props) => {
             dispatch(change({item: current_step.name, id : null}));
         }
         else{
-            const targetId = target.getAttribute('data-id');
+            const targetId = target.getAttribute('data-name');
             let radioList = document.getElementsByClassName('str_radio');
             for(let i = 0 ; i < radioList.length; i++){
                 radioList[i].classList.remove('on')
@@ -50,7 +50,7 @@ let StrRadio = (props) => {
              labelClass += 'on'
         }
         return(
-            <div data-id={choice.idx} key={index} onClick={StrClick} className={strRadioClass}>
+            <div data-name={choice.name} key={index} onClick={StrClick} className={strRadioClass}>
                 {
                     recipe[current_step.name] == choice.idx
                     ? FontAwesomeCheck

@@ -64,7 +64,7 @@ let ImgRadio = (props) => {
                         <div className="card-body">
                             <h4 className="card-text center_align">{choice.name}</h4>
                         </div>
-                        <input className="radio_btn radio_no_style" type="radio" value={choice.idx}/>
+                        <input className="radio_btn radio_no_style" type="radio" value={choice.name}/>
                     </div>
                 </div>
         )

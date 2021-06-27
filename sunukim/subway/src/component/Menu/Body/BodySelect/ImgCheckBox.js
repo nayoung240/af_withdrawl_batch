@@ -33,8 +33,8 @@ let ImgCheckBox = (props) => {
 
     // 제외 카드 정보
     const excludeCardObj = {
-        7 : 15,
-        8 : 6
+        7 : "소스 선택 안함",
+        8 : "선택 안함"
     }
 
     // 카드 클릭 함수
@@ -95,7 +95,7 @@ let ImgCheckBox = (props) => {
     const spreadArr = props.data.map((choice, index) => {
         let szClassList = "card mx-auto rounded menu ";
         
-        if (current_choices.includes(String(choice.idx))){
+        if (current_choices.includes(String(choice.name))){
             szClassList += "on"
         }
          
@@ -106,7 +106,7 @@ let ImgCheckBox = (props) => {
                         <div className="card-body">
                             <h4 className="card-text center_align">{choice.name}</h4>
                         </div>
-                        <input className="checkbox_no_style radio_btn" type="checkbox" value={choice.idx}/>
+                        <input className="checkbox_no_style radio_btn" type="checkbox" value={choice.name}/>
                     </div>
                 </div>
         )

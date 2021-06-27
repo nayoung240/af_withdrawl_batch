@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/index.css';
 import { Route, Switch } from 'react-router-dom';
-import { Main, Menu } from '../pages';
+import { Main, Menu, Result } from '../pages';
 
 const App = () => {
   return (
@@ -9,6 +9,7 @@ const App = () => {
           <Route exact path="/" component={Main}/>
           <Switch>
             <Route path="/menu" component={Menu}/>
+            <Route path="/result" component={Result}/>
           </Switch>
       </div>
   );

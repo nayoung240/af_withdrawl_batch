@@ -6,3 +6,4 @@ export { default as more_added } from './more_added';
 export { default as sauces } from './sauces';
 export { default as toasting } from './toasting';
 export { default as vegetables } from './vegetables';
+export { default as step_info } from './step_info';
