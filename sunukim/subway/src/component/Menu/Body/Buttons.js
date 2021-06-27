@@ -22,6 +22,10 @@ const Buttons = () => {
             dispatch(next_step({}))
         }
         else if (target.classList.contains('prev_btn')){
+            if (recipe[step.name] == null){
+                alert("현재 단계 완료 후 이동 가능합니다.")
+                return
+            }
             dispatch(before_step({}))
         }
         else if (target.classList.contains('complete_btn')){

@@ -22,6 +22,10 @@ const Stepper = () => {
         alert("이전 단계까지 완료 후 이동 가능합니다.")
         return 
       }
+      if (current_recipe[current_step.name] == null){
+        alert("현재 단계 완료 후 이동 가능합니다.")
+        return
+      }
       if (stepId != null){
         dispatch(change_step({id : stepId}))
       }
