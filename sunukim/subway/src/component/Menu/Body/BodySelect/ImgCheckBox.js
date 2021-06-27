@@ -6,68 +6,107 @@ import {change} from 'actions/'
 
 let ImgCheckBox = (props) => {
 
-    // const count = useSelector(selectCount)
-    const dispatch = useDispatch()
-    let selectMenu = 'sandwitch'
-    switch(props.menuid){
-        case "1":
-            selectMenu = 'sandwitch'
-        case "2":
-            selectMenu = 'bread_length'
-        case "3":
-            selectMenu = 'bread'
-        case "4":
-            selectMenu = 'toasting'
-        case "5":
-            selectMenu = 'cheese'
-        case "6":
-            selectMenu = 'vege'
-        case "7":
-            selectMenu = 'sauce'
-        case "8":
-            selectMenu = 'more_added'
-        default:
-            selectMenu = 'sandwitch'
+
+    let removeEle = (ele, arr) => {
+        const index = arr.indexOf(ele);
+        if (index > -1) {
+            arr.splice(index, 1);
+        }
+        if (arr.length < 1) {
+            return null
+        }
+        return arr;
     }
 
+    let initdata = useSelector((state) => {
+        // console.log(state.data)
+        return state.data
+    })
+    const dispatch = useDispatch()
+
+    let current_step = initdata.current_step
+    let recipe = initdata.recipe
+    
+    let current_choices = (recipe[current_step.name] != null) ? recipe[current_step.name] : []
+    console.log("choices : ", current_choices)
     // 저장하는 함수
+
+    // 제외 카드 정보
+    const excludeCardObj = {
+        7 : 15,
+        8 : 6
+    }
 
     // 카드 클릭 함수
     const cardClick = (e) => {
         e.stopPropagation();
-        console.log(e.target.parentNode);
+        // console.log(e.target.parentNode);
         let target = (e.target.classList.contains('card-text')) ? e.target.parentNode.parentNode : e.target.parentNode;
         let bIsOn = target.classList.contains('on');
-        console.log(target.children);
+        // console.log(target.children);
         let targetChildren = target.children;
-        let radioInput = null;
+        let checkBoxInput = null;
         for( let el of targetChildren){
             if(el.nodeName == 'INPUT'){
-                radioInput = el;
+                checkBoxInput = el;
                 break;
             }
         }
+        const keyArr = Object.keys(excludeCardObj)
+        console.log(keyArr, current_step.id)
+        // 로직 정리
+        // 1. 이미 클릭한거면 취소하기
         if(bIsOn){
             target.classList.remove('on');
-            radioInput.setAttribute('checked', false);
+            checkBoxInput.setAttribute('checked', false);
+            current_choices = removeEle(checkBoxInput.value, current_choices)
+            dispatch(change({item: current_step.name, id : current_choices}));
         }
         else{
-            target.classList.add('on');
-            radioInput.setAttribute('checked', true);
-            dispatch(change({item: selectMenu, id : radioInput.value}));
+            // 2. 아니라면 선택 안함 체크
+            if(keyArr.includes(String(current_step.id)) && excludeCardObj[current_step.id] == checkBoxInput.value) {
+                let allOnCards = document.querySelector('div.menu.on');
+                if (allOnCards != null) {
+                    for(let i = 0 ; i < allOnCards.length; i++){
+                        allOnCards[i].classList.remove('on')
+                    }
+                }
+                target.classList.add('on');
+                checkBoxInput.setAttribute('checked', true);
+                current_choices = [checkBoxInput.value]
+                dispatch(change({item: current_step.name, id : current_choices}));
+            }
+            else{
+                if (current_choices.includes(String(excludeCardObj[current_step.id]))){
+                    const excludeCheck = document.querySelector(`input[value="${excludeCardObj[current_step.id]}"]`)
+                    excludeCheck.parentNode.classList.remove("on")
+                    current_choices = removeEle(String(excludeCardObj[current_step.id]), current_choices);
+                    current_choices = current_choices == null ? [] : current_choices; 
+                }
+                target.classList.add('on');
+                checkBoxInput.setAttribute('checked', true);
+                current_choices.push(checkBoxInput.value)
+                dispatch(change({item: current_step.name, id : current_choices}));
+            }
+            
         }
-
     }
 
     const spreadArr = props.data.map((choice, index) => {
+        let szClassList = "card mx-auto rounded menu ";
+        
+        if (current_choices.includes(String(choice.idx))){
+            szClassList += "on"
+        }
+         
         return(
-                <div key={index} className="card_area col-lg-4 col-md-6 col-sm-12">
-                    <div onClick={cardClick} className="card mx-auto rounded menu" style={{width: '18rem'}}>
+                <div key={choice.idx} className="card_area col-lg-4 col-md-6 col-sm-12">
+                    <div onClick={cardClick} className={szClassList} style={{width: '18rem'}}>
                         <img src={choice.image} className="card-img-top" alt={choice.name}/>
                         <div className="card-body">
                             <h4 className="card-text center_align">{choice.name}</h4>
                         </div>
-                        <input className="radio_btn" type="checkbox" value={choice.idx}/>
+                        <input className="checkbox_no_style radio_btn" type="checkbox" value={choice.idx}/>
                     </div>
                 </div>
         )

@@ -128,6 +128,7 @@ body {
 
 .next_btn{
     background-color: grey;
+    margin-left: 1rem;
 }
 
 .next_btn.on{
@@ -140,8 +141,45 @@ body {
     width: 0;
 }
 
+.checkbox_no_style{
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+.ahover{
+    cursor:pointer;
+}
+
+
 .prev_btn{
     background-color: #329932;
+}
+
+.str_radio {
+    width: 12rem;
+    border: solid;
+    margin-top: 1rem;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius : 5px
+}
+
+.str_radio.on {
+    background-color: #FBDF63;
+}
+
+.radio_label.on {
+    margin-left: 1rem;
+}
+
+.complete_btn{
+    background-color: grey;
+    margin-left: 1rem;
+}
+
+.complete_btn.on {
+    background-color: #D896FF;
 }
 
 @font-face { 

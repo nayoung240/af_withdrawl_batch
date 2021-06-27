@@ -1,0 +1,17 @@
+{
+    "title":"토스팅 여부 고르기",
+    "results":[
+        {
+        "idx":1,
+        "name":"토스팅 함",
+        "eng_name":"toasting",
+        "short_name":"토스팅 함"
+        },
+        {
+        "idx":2,
+        "name":"토스팅 안 함",
+        "eng_name":"not toasting",
+        "short_name":"토스팅 안 함"
+        }
+    ]
+}

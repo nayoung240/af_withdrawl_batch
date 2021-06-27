@@ -1,0 +1,47 @@
+{
+    "title":"추가 선택하기",
+    "results":[
+        {
+            "idx":1,
+            "name":"아보카도",
+            "eng_name":"Abocado",
+            "short_name":"아보카도",
+            "image":"/more_added/abocado.png"
+        },
+        {
+            "idx":2,
+            "name":"베이컨",
+            "eng_name":"Bacon",
+            "short_name":"베이컨",
+            "image":"/more_added/bacon.png"
+        },
+        {
+            "idx":3,
+            "name":"에그 마요",
+            "eng_name":"Egg Mayo",
+            "short_name":"에그 마요",
+            "image":"/more_added/egg_mayo.png"
+        },
+        {
+            "idx":4,
+            "name":"오믈렛",
+            "eng_name":"Omellette",
+            "short_name":"오믈렛",
+            "image":"/more_added/Omellette.png"
+        },
+        {
+            "idx":5,
+            "name":"페퍼로니",
+            "eng_name":"Pepperoni",
+            "short_name":"페퍼로니",
+            "image":"/more_added/pepperoni.png"
+        },
+        {
+            "idx":6,            
+            "name":"선택 안함",
+            "eng_name":"None Added",
+            "short_name":"선택 안함",
+            "image":"/more_added/none_added.png"
+        }
+    ]
+}

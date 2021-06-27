@@ -8,7 +8,7 @@ const App = () => {
       <div className="container">
           <Route exact path="/" component={Main}/>
           <Switch>
-            <Route path="/menu/:menuid" component={Menu}/>
+            <Route path="/menu" component={Menu}/>
           </Switch>
       </div>
   );

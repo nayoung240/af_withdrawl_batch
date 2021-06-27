@@ -3,37 +3,60 @@ import Header from '../component/Menu/Header/Header'
 import Buttons from '../component/Menu/Body/Buttons'
 import Body from '../component/Menu/Body/Body'
 import Stepper from '../component/Menu/Stepper/Stepper'
-import { sandwitch, bread_length } from '../data';
+import { sandwitch, bread_length, bread, cheese, more_added, sauces, toasting, vegetables } from '../data';
+import {connect, useSelector, useDispatch } from 'react-redux'
+import {change} from 'actions/'
 
 const Menu = ({match}) => {
-    const {menuid} = match.params;
+    // 현재 단계 받아온다.
+    // State 부르기
+    let current_state = useSelector((state) => {
+        return state.data
+    })
+    let current_step = current_state.current_step;
+    let current_recipe = current_state.recipe;
+    // 저장하는 함수
+    const dispatch = useDispatch()
+    const menuid = current_step.id;
+    
     let data1 = sandwitch;
+    let selectMenu = 'sandwitch'
     switch(menuid){
-        case "1":
+        case 1:
+            selectMenu = 'sandwitch'
             data1 = sandwitch;
             break;
-        case "2":
+        case 2:
+            selectMenu = 'bread_length'
             data1 = bread_length;
             break;
-        case "3":
-            data1 = 'bread'
+        case 3:
+            selectMenu = 'bread'
+            data1 = bread;
             break;
-        case "4":
-            data1 = 'toasting'
+        case 4:
+            selectMenu = 'toasting'
+            data1 = toasting;
             break;
-        case "5":
-            data1 = 'cheese'
+        case 5:
+            selectMenu = 'cheese'
+            data1 = cheese;
             break;
-        case "6":
-            data1 = 'vege'
+        case 6:
+            selectMenu = 'vege'
+            data1 = vegetables;
             break;
-        case "7":
-            data1 = 'sauce'
+        case 7:
+            selectMenu = 'sauce'
+            data1 = sauces;
             break;
-        case "8":
-            data1 = 'more_added'
+        case 8:
+            selectMenu = 'more_added'
+            data1 = more_added;
             break;
         default:
+            selectMenu = 'sandwitch'
+            data1 = sandwitch;
             break;
     }
 
@@ -41,7 +64,7 @@ const Menu = ({match}) => {
         <>
             <Header title = {data1.title}/>
             <Stepper />
-            <Body menuid = {menuid} data = {data1}/>
+            <Body data = {data1}/>
             <Buttons/>
         </>
     )
