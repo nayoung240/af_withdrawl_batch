@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useEffect } from 'react';
 import {connect, useSelector, useDispatch } from 'react-redux'
 import {change} from 'actions/'
 
@@ -13,7 +13,12 @@ let ImgRadio = (props) => {
     let current_recipe = current_state.recipe;
     // 저장하는 함수
     const dispatch = useDispatch()
-    
+    useEffect(() => {
+        return () => {
+            window.localStorage.setItem('data', JSON.stringify(current_recipe));
+            window.localStorage.setItem('step', JSON.stringify(current_step));
+        };
+    }, [current_step, current_recipe])
     // 카드 클릭 함수
     const cardClick = (e) => {
         e.stopPropagation();

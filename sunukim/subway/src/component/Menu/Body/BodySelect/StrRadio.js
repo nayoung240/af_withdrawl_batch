@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useEffect } from 'react';
 import {connect, useSelector, useDispatch } from 'react-redux'
 import {change} from 'actions/'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,6 +15,13 @@ let StrRadio = (props) => {
 
     let current_step = initdata.current_step
     let recipe = initdata.recipe
+
+    useEffect(() => {
+        return () => {
+            window.localStorage.setItem('data', JSON.stringify(recipe));
+            window.localStorage.setItem('step', JSON.stringify(current_step));
+        };
+    }, [current_step, recipe])
     
     // 클릭 및 저장 함수
     const StrClick = (e) => {

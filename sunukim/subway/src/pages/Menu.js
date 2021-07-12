@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../component/Menu/Header/Header'
 import Buttons from '../component/Menu/Body/Buttons'
 import Body from '../component/Menu/Body/Body'
@@ -16,6 +16,21 @@ const Menu = ({match}) => {
     let current_step = current_state.current_step;
     let current_recipe = current_state.recipe;
     // 저장하는 함수
+    useEffect(() => {
+        if (window.localStorage.data && !current_recipe) {
+            current_recipe = JSON.parse(window.localStorage.data);
+            window.localStorage.removeItem('data');
+        }
+        if (window.localStorage.step && !current_step){
+            current_step = JSON.parse(window.localStorage.step)
+            window.localStorage.removeItem('current_step');
+        }
+        return () => {
+            window.localStorage.setItem('data', JSON.stringify(current_recipe));
+            window.localStorage.setItem('step', JSON.stringify(current_step));
+        };
+    }, [current_step, current_recipe])
+
     const dispatch = useDispatch()
     const menuid = current_step.id;
     

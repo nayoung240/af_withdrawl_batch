@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect, useSelector, useDispatch } from 'react-redux'
 import {change, next_step, before_step} from 'actions/'
+import { Link } from 'react-router-dom';
 
 // 여기서 step에 대한 정보 불러와서 현재 스텝의 정보가 있으면
 // '다음' 활성화
@@ -89,9 +90,18 @@ const Buttons = () => {
 
     const showButton = Object.entries(makeBtnObj()).map((valueArr, index) => {
         const value = valueArr[1]
-        return (
-            <button key={index} className={value.classStr} onClick={updateStep}><h4>{value.btnStr}</h4></button>
-        )
+        if (value.btnStr == "완료"){
+            return (<Link to="/result">
+                    <button key={index} className={value.classStr} onClick={updateStep}><h4>{value.btnStr}</h4></button>
+                </Link>
+            )
+        }
+        else{
+            return (
+                <button key={index} className={value.classStr} onClick={updateStep}><h4>{value.btnStr}</h4></button>
+            )
+        }
+        
     })
 
     return(

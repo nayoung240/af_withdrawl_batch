@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useEffect } from 'react';
 import {connect, useSelector, useDispatch } from 'react-redux'
 import {change} from 'actions/'
 
@@ -24,8 +24,17 @@ let ImgCheckBox = (props) => {
     })
     const dispatch = useDispatch()
 
+    
+
     let current_step = initdata.current_step
     let recipe = initdata.recipe
+
+    useEffect(() => {
+        return () => {
+            window.localStorage.setItem('data', JSON.stringify(recipe));
+            window.localStorage.setItem('step', JSON.stringify(current_step));
+        };
+    }, [current_step, recipe])
     
     let current_choices = (recipe[current_step.name] != null) ? recipe[current_step.name] : []
     console.log("choices : ", current_choices)
