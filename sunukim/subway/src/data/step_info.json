@@ -1,0 +1,53 @@
+{
+    "title":"단계 정보",
+    "results":[
+        {
+        "idx":1,
+        "name":"샌드위치 종류",
+        "eng_name":"sandwitch",
+        "short_name":"sandwitch"
+        },
+        {
+        "idx":2,
+        "name":"빵 길이",
+        "eng_name":"bread_length",
+        "short_name":"bread_length"
+        },
+        {
+        "idx":3,
+        "name":"빵 종류",
+        "eng_name":"bread",
+        "short_name":"bread"
+        },
+        {
+        "idx":4,
+        "name":"토스팅 여부",
+        "eng_name":"toasting",
+        "short_name":"toasting"
+        },
+        {
+        "idx":5,
+        "name":"치즈",
+        "eng_name":"cheese",
+        "short_name":"cheese"
+        },
+        {
+        "idx":6,
+        "name":"야채",
+        "eng_name":"vege",
+        "short_name":"vege"
+        },
+        {
+        "idx":7,
+        "name":"소스/시즈닝",
+        "eng_name":"sauce",
+        "short_name":"sauce"
+        },
+        {
+        "idx":8,
+        "name":"추가 선택",
+        "eng_name":"more_added",
+        "short_name":"more_added"
+        }
+    ]
+}
